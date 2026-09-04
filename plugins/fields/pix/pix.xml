@@ -22,6 +22,7 @@
     </files>
     <media destination="plg_fields_pix" folder="media">
         <filename>joomla.asset.json</filename>
+        <folder>css</folder>
         <folder>images</folder>
         <folder>js</folder>
     </media>

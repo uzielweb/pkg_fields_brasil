@@ -72,7 +72,7 @@
   /**
    * Loads qrcode.min.js dynamically if not already available in window
    */
-  const ensureQrCodeLoaded = (callback) => {
+  const ensureQrCodeLoaded = (callback, customScriptUrl = '') => {
     if (typeof QRCode !== 'undefined') {
       callback();
       return;
@@ -81,9 +81,13 @@
     if (!document.getElementById('pix_qrcode_js')) {
       const script = document.createElement('script');
       script.id = 'pix_qrcode_js';
-      const rootMeta = document.querySelector('meta[name="joomla:root-url"]');
-      const rootUrl = rootMeta && rootMeta.content ? rootMeta.content.replace(/\/$/, '') : '';
-      script.src = rootUrl + '/media/plg_fields_pix/js/qrcode.min.js';
+      if (customScriptUrl) {
+        script.src = customScriptUrl;
+      } else {
+        const rootMeta = document.querySelector('meta[name="joomla:root-url"]');
+        const rootUrl = rootMeta && rootMeta.content ? rootMeta.content.replace(/\/$/, '') : '';
+        script.src = (rootUrl || '') + '/media/plg_fields_pix/js/qrcode.min.js';
+      }
       script.onload = () => {
         document.dispatchEvent(new Event('pix_qrcode_loaded'));
       };
@@ -145,6 +149,7 @@
       const city = card.dataset.merchantCity;
       const txid = card.dataset.txid;
       const logoUrl = card.dataset.logoUrl || '';
+      const qrcodeScript = card.dataset.qrcodeScript || '';
       const qrContainer = card.querySelector('.pix-qrcode-container');
       const payloadInput = card.querySelector('.pix-payload-input');
       const amountInput = card.querySelector('.pix-amount-input');
@@ -157,14 +162,14 @@
           payloadInput.value = payload;
         }
         if (qrContainer) {
-          ensureQrCodeLoaded(() => renderQrCode(qrContainer, payload, 200));
+          ensureQrCodeLoaded(() => renderQrCode(qrContainer, payload, 200), qrcodeScript);
         }
       };
 
       // Initial render of QR code
       const initialPayload = card.dataset.payload || (payloadInput ? payloadInput.value : '');
       if (qrContainer && initialPayload) {
-        ensureQrCodeLoaded(() => renderQrCode(qrContainer, initialPayload, 200));
+        ensureQrCodeLoaded(() => renderQrCode(qrContainer, initialPayload, 200), qrcodeScript);
       }
 
       // Handle real-time amount changes (Free Amount mode)

@@ -65,8 +65,8 @@ final class Telefone extends FieldsPlugin implements SubscriberInterface
         if ($app && $app->getDocument() instanceof HtmlDocument) {
             $wa = $app->getDocument()->getWebAssetManager();
             $wa->registerAndUseScript(
-                'fields.telefone',
-                'plg_fields_telefone/telefone.js',
+                'plg_fields_telefone',
+                'media/plg_fields_telefone/js/telefone.js',
                 ['version' => '1.0.0'],
                 ['defer' => true],
                 ['core', 'form.validate']

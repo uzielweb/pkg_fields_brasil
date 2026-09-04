@@ -78,8 +78,8 @@ final class Cep extends FieldsPlugin implements SubscriberInterface
         if ($app && $app->getDocument() instanceof HtmlDocument) {
             $wa = $app->getDocument()->getWebAssetManager();
             $wa->registerAndUseScript(
-                'fields.cep',
-                'plg_fields_cep/cep.js',
+                'plg_fields_cep',
+                'media/plg_fields_cep/js/cep.js',
                 ['version' => '1.0.0'],
                 ['defer' => true],
                 ['core', 'form.validate']

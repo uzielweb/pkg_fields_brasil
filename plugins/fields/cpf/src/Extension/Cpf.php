@@ -65,8 +65,8 @@ final class Cpf extends FieldsPlugin implements SubscriberInterface
         if ($app && $app->getDocument() instanceof HtmlDocument) {
             $wa = $app->getDocument()->getWebAssetManager();
             $wa->registerAndUseScript(
-                'fields.cpf',
-                'plg_fields_cpf/cpf.js',
+                'plg_fields_cpf',
+                'media/plg_fields_cpf/js/cpf.js',
                 ['version' => '1.0.0'],
                 ['defer' => true],
                 ['core', 'form.validate']

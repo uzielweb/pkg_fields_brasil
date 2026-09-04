@@ -20,8 +20,9 @@ use Uziel\Plugin\Fields\Pix\Helper\PixHelper;
 $doc = Factory::getApplication()->getDocument();
 if ($doc instanceof \Joomla\CMS\Document\HtmlDocument) {
     $wa = $doc->getWebAssetManager();
-    $wa->registerAndUseScript('fields.pix.qrcode', 'plg_fields_pix/qrcode.min.js', [], ['defer' => true]);
-    $wa->registerAndUseScript('fields.pix', 'plg_fields_pix/pix.js', [], ['defer' => true], ['fields.pix.qrcode']);
+    $wa->registerAndUseStyle('plg_fields_pix', 'media/plg_fields_pix/css/pix.css');
+    $wa->registerAndUseScript('plg_fields_pix.qrcode', 'media/plg_fields_pix/js/qrcode.min.js', [], ['defer' => true]);
+    $wa->registerAndUseScript('plg_fields_pix', 'media/plg_fields_pix/js/pix.js', [], ['defer' => true], ['plg_fields_pix.qrcode']);
 }
 
 $rawValue = $field->value;
@@ -126,7 +127,8 @@ foreach ($items as $item) :
     }
 
     $initialPayload = PixHelper::generatePayload($key, $merchantName, $merchantCity, $initialAmount, $txid);
-    $keyType        = PixHelper::getKeyType($key) ?: 'pix';
+    $keyType         = PixHelper::getKeyType($key) ?: 'pix';
+    $qrcodeScriptUrl = Uri::root(true) . '/media/plg_fields_pix/js/qrcode.min.js';
 ?>
 <div class="field-pix-card card p-3 shadow-sm my-2" data-field-id="<?php echo (int) $field->id; ?>"
      data-pix-key="<?php echo htmlspecialchars($key, ENT_QUOTES, 'UTF-8'); ?>"
@@ -135,6 +137,7 @@ foreach ($items as $item) :
      data-txid="<?php echo htmlspecialchars($txid, ENT_QUOTES, 'UTF-8'); ?>"
      data-amount-mode="<?php echo htmlspecialchars($amountMode, ENT_QUOTES, 'UTF-8'); ?>"
      data-logo-url="<?php echo htmlspecialchars($logoUrl, ENT_QUOTES, 'UTF-8'); ?>"
+     data-qrcode-script="<?php echo htmlspecialchars($qrcodeScriptUrl, ENT_QUOTES, 'UTF-8'); ?>"
      data-payload="<?php echo htmlspecialchars($initialPayload, ENT_QUOTES, 'UTF-8'); ?>">
 
     <div class="d-flex align-items-center justify-content-between mb-2">

@@ -65,8 +65,8 @@ final class Cpfcnpj extends FieldsPlugin implements SubscriberInterface
         if ($app && $app->getDocument() instanceof HtmlDocument) {
             $wa = $app->getDocument()->getWebAssetManager();
             $wa->registerAndUseScript(
-                'fields.cpfcnpj',
-                'plg_fields_cpfcnpj/cpfcnpj.js',
+                'plg_fields_cpfcnpj',
+                'media/plg_fields_cpfcnpj/js/cpfcnpj.js',
                 ['version' => '1.0.0'],
                 ['defer' => true],
                 ['core', 'form.validate']

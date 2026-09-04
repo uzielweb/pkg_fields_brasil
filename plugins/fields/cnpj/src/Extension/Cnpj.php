@@ -70,8 +70,8 @@ final class Cnpj extends FieldsPlugin implements SubscriberInterface
         if ($app && $app->getDocument() instanceof HtmlDocument) {
             $wa = $app->getDocument()->getWebAssetManager();
             $wa->registerAndUseScript(
-                'fields.cnpj',
-                'plg_fields_cnpj/cnpj.js',
+                'plg_fields_cnpj',
+                'media/plg_fields_cnpj/js/cnpj.js',
                 ['version' => '1.0.0'],
                 ['defer' => true],
                 ['core', 'form.validate']
