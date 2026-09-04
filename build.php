@@ -103,6 +103,11 @@ if ($pkgZip->open($packageZipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) !
 // Add package manifest
 $pkgZip->addFile($rootDir . '/pkg_fields_brasil.xml', 'pkg_fields_brasil.xml');
 
+// Add package installer script (auto-enables all plugins)
+if (file_exists($rootDir . '/script.php')) {
+    $pkgZip->addFile($rootDir . '/script.php', 'script.php');
+}
+
 // Add package language files
 $langFiles = [
     'language/pt-BR/pkg_fields_brasil.sys.ini',

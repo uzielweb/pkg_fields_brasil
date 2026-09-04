@@ -10,12 +10,14 @@
     <version>1.0.0</version>
     <description>PLG_FIELDS_CNPJ_XML_DESCRIPTION</description>
     <namespace path="src">Uziel\Plugin\Fields\Cnpj</namespace>
+    <scriptfile>script.php</scriptfile>
     <files>
         <folder>params</folder>
         <folder>rules</folder>
         <folder plugin="cnpj">services</folder>
         <folder>src</folder>
         <folder>tmpl</folder>
+        <filename>script.php</filename>
     </files>
     <media destination="plg_fields_cnpj" folder="media">
         <filename>joomla.asset.json</filename>
@@ -70,4 +72,7 @@
             </fieldset>
         </fields>
     </config>
+    <updateservers>
+        <server type="extension" priority="1" name="PLG_FIELDS_CNPJ">https://raw.githubusercontent.com/uzielweb/pkg_fields_brasil/main/updates.xml</server>
+    </updateservers>
 </extension>

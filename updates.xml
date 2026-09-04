@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updates>
+    <update>
+        <name>PKG_FIELDS_BRASIL</name>
+        <description>Brazilian Custom Fields Package for Joomla 6</description>
+        <element>pkg_fields_brasil</element>
+        <type>package</type>
+        <version>1.0.0</version>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0/pkg_fields_brasil_v1.0.0.zip</downloadurl>
+        </downloads>
+        <tags>
+            <tag>stable</tag>
+        </tags>
+        <maintainer>Uziel Almeida Oliveira</maintainer>
+        <maintainerurl>https://github.com/uzielweb</maintainerurl>
+        <targetplatform name="joomla" version="(5|6)\..*" />
+    </update>
+
+    <update>
+        <name>PLG_FIELDS_CPF</name>
+        <description>CPF Custom Field Plugin for Joomla 6</description>
+        <element>cpf</element>
+        <type>plugin</type>
+        <folder>fields</folder>
+        <version>1.0.0</version>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0/pkg_fields_brasil_v1.0.0.zip</downloadurl>
+        </downloads>
+        <tags>
+            <tag>stable</tag>
+        </tags>
+        <maintainer>Uziel Almeida Oliveira</maintainer>
+        <maintainerurl>https://github.com/uzielweb</maintainerurl>
+        <targetplatform name="joomla" version="(5|6)\..*" />
+    </update>
+
+    <update>
+        <name>PLG_FIELDS_CNPJ</name>
+        <description>CNPJ Custom Field Plugin for Joomla 6</description>
+        <element>cnpj</element>
+        <type>plugin</type>
+        <folder>fields</folder>
+        <version>1.0.0</version>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0/pkg_fields_brasil_v1.0.0.zip</downloadurl>
+        </downloads>
+        <tags>
+            <tag>stable</tag>
+        </tags>
+        <maintainer>Uziel Almeida Oliveira</maintainer>
+        <maintainerurl>https://github.com/uzielweb</maintainerurl>
+        <targetplatform name="joomla" version="(5|6)\..*" />
+    </update>
+
+    <update>
+        <name>PLG_FIELDS_CEP</name>
+        <description>CEP Custom Field Plugin for Joomla 6</description>
+        <element>cep</element>
+        <type>plugin</type>
+        <folder>fields</folder>
+        <version>1.0.0</version>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0/pkg_fields_brasil_v1.0.0.zip</downloadurl>
+        </downloads>
+        <tags>
+            <tag>stable</tag>
+        </tags>
+        <maintainer>Uziel Almeida Oliveira</maintainer>
+        <maintainerurl>https://github.com/uzielweb</maintainerurl>
+        <targetplatform name="joomla" version="(5|6)\..*" />
+    </update>
+
+    <update>
+        <name>PLG_FIELDS_TELEFONE</name>
+        <description>Telefone / WhatsApp Custom Field Plugin for Joomla 6</description>
+        <element>telefone</element>
+        <type>plugin</type>
+        <folder>fields</folder>
+        <version>1.0.0</version>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0/pkg_fields_brasil_v1.0.0.zip</downloadurl>
+        </downloads>
+        <tags>
+            <tag>stable</tag>
+        </tags>
+        <maintainer>Uziel Almeida Oliveira</maintainer>
+        <maintainerurl>https://github.com/uzielweb</maintainerurl>
+        <targetplatform name="joomla" version="(5|6)\..*" />
+    </update>
+
+    <update>
+        <name>PLG_FIELDS_CPFCNPJ</name>
+        <description>Hybrid CPF / CNPJ Custom Field Plugin for Joomla 6</description>
+        <element>cpfcnpj</element>
+        <type>plugin</type>
+        <folder>fields</folder>
+        <version>1.0.0</version>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0/pkg_fields_brasil_v1.0.0.zip</downloadurl>
+        </downloads>
+        <tags>
+            <tag>stable</tag>
+        </tags>
+        <maintainer>Uziel Almeida Oliveira</maintainer>
+        <maintainerurl>https://github.com/uzielweb</maintainerurl>
+        <targetplatform name="joomla" version="(5|6)\..*" />
+    </update>
+
+    <update>
+        <name>PLG_FIELDS_PIX</name>
+        <description>Chave PIX Custom Field Plugin for Joomla 6</description>
+        <element>pix</element>
+        <type>plugin</type>
+        <folder>fields</folder>
+        <version>1.0.0</version>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0/pkg_fields_brasil_v1.0.0.zip</downloadurl>
+        </downloads>
+        <tags>
+            <tag>stable</tag>
+        </tags>
+        <maintainer>Uziel Almeida Oliveira</maintainer>
+        <maintainerurl>https://github.com/uzielweb</maintainerurl>
+        <targetplatform name="joomla" version="(5|6)\..*" />
+    </update>
+</updates>

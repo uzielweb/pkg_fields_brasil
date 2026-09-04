@@ -7,6 +7,7 @@
     <packager>Uziel Almeida Oliveira</packager>
     <packagerurl>https://github.com/uzielweb</packagerurl>
     <description>PKG_FIELDS_BRASIL_XML_DESCRIPTION</description>
+    <scriptfile>script.php</scriptfile>
     <files folder="packages">
         <file type="plugin" id="cpf" group="fields">plg_fields_cpf.zip</file>
         <file type="plugin" id="cnpj" group="fields">plg_fields_cnpj.zip</file>
@@ -19,4 +20,7 @@
         <language tag="pt-BR">pt-BR/pkg_fields_brasil.sys.ini</language>
         <language tag="en-GB">en-GB/pkg_fields_brasil.sys.ini</language>
     </languages>
+    <updateservers>
+        <server type="extension" priority="1" name="PKG_FIELDS_BRASIL">https://raw.githubusercontent.com/uzielweb/pkg_fields_brasil/main/updates.xml</server>
+    </updateservers>
 </extension>

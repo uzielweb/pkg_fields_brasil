@@ -67,11 +67,13 @@ The Pix plugin generates valid EMVCo TLV payloads:
 
 ---
 
-### Installation in Joomla 6
+### Installation & Updates in Joomla 6
 
 1. In the Joomla Administrator panel, navigate to **System** > **Install** > **Extensions**.
 2. Under the **Upload Package File** tab, upload **`pkg_fields_brasil_v1.0.0.zip`**.
-3. Go to **Content** > **Fields** (or **Users** > **Fields**), click **New**, and select the desired field type.
+3. **Auto-Enabled**: All 6 plugins are automatically enabled upon installation via the installer script.
+4. **Update Server**: The package includes native Joomla Update Server integration (`updates.xml`). Future releases will appear directly in Joomla's **System** > **Update** > **Extensions**.
+5. Go to **Content** > **Fields** (or **Users** > **Fields**), click **New**, and select the desired field type.
 
 ---
 
@@ -137,11 +139,13 @@ document.addEventListener('joomla:cep-found', (e) => {
 
 ---
 
-### Instalação no Joomla 6
+### Instalação e Atualizações no Joomla 6
 
 1. No painel de administração do Joomla 6, acesse **Sistema** > **Instalar** > **Extensões**.
 2. Na aba **Enviar Arquivo Pacote**, envie o arquivo **`pkg_fields_brasil_v1.0.0.zip`**.
-3. Acesse **Conteúdo** > **Campos** (ou **Usuários** > **Campos**), clique em **Novo** e selecione o tipo de campo desejado.
+3. **Habilitação Automática**: Todos os 6 plugins são automaticamente habilitados no banco de dados durante a instalação através do script de pós-instalação (`postflight`).
+4. **Update Server Nativo**: O pacote já vem configurado com servidor de atualização do Joomla (`updates.xml`). Novas versões serão notificadas diretamente em **Sistema** > **Atualizar** > **Extensões**.
+5. Acesse **Conteúdo** > **Campos** (ou **Usuários** > **Campos**), clique em **Novo** e selecione o tipo de campo desejado.
 
 ---
 
@@ -150,6 +154,8 @@ document.addEventListener('joomla:cep-found', (e) => {
 ```
 pkg_fields_brasil/
 ├── pkg_fields_brasil.xml             # Manifesto mestre do pacote Joomla
+├── script.php                        # Script de instalação do pacote (habilita os 6 plugins)
+├── updates.xml                       # Servidor de atualização nativo do Joomla (Update Server)
 ├── build.php                         # Automação CLI de empacotamento
 ├── tests/
 │   └── test_validation.php           # Suíte de testes unitários automatizados

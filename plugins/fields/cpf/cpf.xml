@@ -10,12 +10,14 @@
     <version>1.0.0</version>
     <description>PLG_FIELDS_CPF_XML_DESCRIPTION</description>
     <namespace path="src">Uziel\Plugin\Fields\Cpf</namespace>
+    <scriptfile>script.php</scriptfile>
     <files>
         <folder>params</folder>
         <folder>rules</folder>
         <folder plugin="cpf">services</folder>
         <folder>src</folder>
         <folder>tmpl</folder>
+        <filename>script.php</filename>
     </files>
     <media destination="plg_fields_cpf" folder="media">
         <filename>joomla.asset.json</filename>
@@ -57,4 +59,7 @@
             </fieldset>
         </fields>
     </config>
+    <updateservers>
+        <server type="extension" priority="1" name="PLG_FIELDS_CPF">https://raw.githubusercontent.com/uzielweb/pkg_fields_brasil/main/updates.xml</server>
+    </updateservers>
 </extension>
