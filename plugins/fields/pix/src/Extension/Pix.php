@@ -19,14 +19,14 @@ use Joomla\Event\SubscriberInterface;
 \defined('_JEXEC') or die;
 
 /**
- * Fields Pix Plugin (QR Code & Copia e Cola)
+ * Fields Pix Plugin (QR Code & Copia e Cola - Multicampo Subform)
  *
  * @since 1.0.0
  */
 final class Pix extends FieldsPlugin implements SubscriberInterface
 {
     /**
-     * Transforms the field into a DOM XML element and appends it as a child on the given parent.
+     * Transforms the field into a Subform DOM element with structured Pix fields.
      *
      * @param   \stdClass    $field   The field.
      * @param   \DOMElement  $parent  The field node parent.
@@ -46,14 +46,20 @@ final class Pix extends FieldsPlugin implements SubscriberInterface
         FormHelper::addRulePath(JPATH_PLUGINS . '/fields/pix/rules');
         FormHelper::addRulePrefix('Uziel\\Plugin\\Fields\\Pix\\Rule');
 
-        // Configure validation and UX attributes
-        $fieldNode->setAttribute('validate', 'pix');
+        $fieldParams  = $this->getParamsFromField($field);
+        $isRepeatable = (bool) $fieldParams->get('repeat', 0);
 
-        $currentClass = $fieldNode->getAttribute('class');
-        $fieldNode->setAttribute('class', trim($currentClass . ' validate-pix joomla-field-pix'));
+        // Configure as a Subform (composite multicampo)
+        $fieldNode->setAttribute('type', 'subform');
+        $fieldNode->setAttribute('formsource', 'plugins/fields/pix/forms/pix_subform.xml');
+        $fieldNode->setAttribute('multiple', $isRepeatable ? 'true' : 'false');
+        $fieldNode->setAttribute(
+            'layout',
+            $isRepeatable ? 'joomla.form.field.subform.repeatable-table' : 'joomla.form.field.subform.default'
+        );
 
-        if (!$fieldNode->getAttribute('hint')) {
-            $fieldNode->setAttribute('hint', 'CPF, CNPJ, E-mail, Celular ou Chave Aleatória');
+        if ($field->required) {
+            $fieldNode->setAttribute('min', '1');
         }
 
         // Safely load frontend/admin assets via Web Asset Manager

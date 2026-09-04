@@ -7,11 +7,12 @@
     <license>GNU General Public License version 2 or later; see LICENSE</license>
     <authorEmail>uzielweb@gmail.com</authorEmail>
     <authorUrl>https://github.com/uzielweb</authorUrl>
-    <version>1.0.0</version>
+    <version>1.0.0-alpha1</version>
     <description>PLG_FIELDS_PIX_XML_DESCRIPTION</description>
     <namespace path="src">Uziel\Plugin\Fields\Pix</namespace>
     <scriptfile>script.php</scriptfile>
     <files>
+        <folder>forms</folder>
         <folder>params</folder>
         <folder>rules</folder>
         <folder plugin="pix">services</folder>

@@ -144,6 +144,38 @@ namespace {
     $crcCalculated = PixHelper::calculateCrc16(substr($body, 0, -4));
     assertCondition($crcCalculated === $crcExpected, "CRC16 checksum verified ($crcExpected === $crcCalculated)");
 
+    // Subform Multicampo parsing & payload generation
+    $singleSubformJson = json_encode([
+        'pix_key'       => '52998224725',
+        'merchant_name' => 'LOJA VIRTUAL',
+        'merchant_city' => 'RIO DE JANEIRO',
+        'amount_mode'   => 'fixed',
+        'amount'        => '199.90',
+        'txid'          => 'CURSO2026'
+    ]);
+    $parsedSingle = json_decode($singleSubformJson, true);
+    assertCondition(PixRule::validate($parsedSingle['pix_key']), 'Subform pix_key passes PixRule validation');
+    $subformPayload = PixHelper::generatePayload(
+        $parsedSingle['pix_key'],
+        $parsedSingle['merchant_name'],
+        $parsedSingle['merchant_city'],
+        (float) $parsedSingle['amount'],
+        $parsedSingle['txid']
+    );
+    assertCondition(str_contains($subformPayload, '5406199.90'), 'Subform payload contains custom amount 199.90');
+    assertCondition(str_contains($subformPayload, '5912LOJA VIRTUAL'), 'Subform payload contains custom merchant name');
+
+    // Multiple repeatable rows test
+    $repeatableJson = json_encode([
+        'row0' => ['pix_key' => 'contato@empresa.com', 'amount_mode' => 'none'],
+        'row1' => ['pix_key' => '11988887777', 'amount_mode' => 'free', 'amount' => '50.00']
+    ]);
+    $parsedRepeatable = json_decode($repeatableJson, true);
+    $rows = array_values($parsedRepeatable);
+    assertCondition(count($rows) === 2, 'Repeatable subform produces 2 separate Pix items');
+    assertCondition(PixRule::validate($rows[0]['pix_key']) && PixRule::validate($rows[1]['pix_key']), 'Both repeatable Pix keys are valid');
+
+
     echo "\n============================================\n";
     echo "Results: $passed Passed, $failed Failed\n";
     echo "============================================\n";

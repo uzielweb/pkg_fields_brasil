@@ -3,7 +3,7 @@
 [![Joomla 6 Compatible](https://img.shields.io/badge/Joomla!-6.x%20%7C%205.x-5091CD?style=flat-square&logo=joomla)](https://www.joomla.org)
 [![PHP Version](https://img.shields.io/badge/PHP-%3E%3D%208.2-777BB4?style=flat-square&logo=php)](https://www.php.net)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg?style=flat-square)](LICENSE)
-[![Release](https://img.shields.io/badge/Release-v1.0.0-green.svg?style=flat-square)](https://github.com/uzielweb/pkg_fields_brasil/releases/tag/v1.0.0)
+[![Release](https://img.shields.io/badge/Release-v1.0.0--alpha1-orange.svg?style=flat-square)](https://github.com/uzielweb/pkg_fields_brasil/releases/tag/v1.0.0-alpha1)
 
 ---
 
@@ -28,7 +28,7 @@ Built specifically for Brazilian web applications, in full compliance with curre
 | **`plg_fields_cep`** | `cep` | 8-digit postal code, dynamic mask, and automated asynchronous ViaCEP address lookup. | **ViaCEP API** / Correios |
 | **`plg_fields_telefone`** | `telefone` | Dynamic 8/9-digit phone mask, Anatel area code (DDD) validation, and WhatsApp Click-to-Chat. | **Anatel / WhatsApp API** |
 | **`plg_fields_cpfcnpj`** | `cpfcnpj` | Adaptive hybrid field with seamless real-time mask transition between CPF and CNPJ. | **Receita Federal (PF / PJ)** |
-| **`plg_fields_pix`** | `pix` | Multi-format key validation, automatic EMVCo "Pix Copia e Cola" code and dynamic QR Code generation. | **Central Bank of Brazil (BACEN)** |
+| **`plg_fields_pix`** | `pix` | Multifield Subform (key, holder, city, fixed/free amount, txid, description), EMVCo payload, and QR Code. | **Central Bank of Brazil (BACEN)** |
 
 ---
 
@@ -70,7 +70,7 @@ The Pix plugin generates valid EMVCo TLV payloads:
 ### Installation & Updates in Joomla 6
 
 1. In the Joomla Administrator panel, navigate to **System** > **Install** > **Extensions**.
-2. Under the **Upload Package File** tab, upload **`pkg_fields_brasil_v1.0.0.zip`**.
+2. Under the **Upload Package File** tab, upload **`pkg_fields_brasil_v1.0.0-alpha1.zip`**.
 3. **Auto-Enabled**: All 6 plugins are automatically enabled upon installation via the installer script.
 4. **Update Server**: The package includes native Joomla Update Server integration (`updates.xml`). Future releases will appear directly in Joomla's **System** > **Update** > **Extensions**.
 5. Go to **Content** > **Fields** (or **Users** > **Fields**), click **New**, and select the desired field type.
@@ -96,7 +96,7 @@ Projetada especificamente para aplicações web brasileiras, em total conformida
 | **`plg_fields_cep`** | `cep` | Validação de 8 dígitos, máscara e auto-preenchimento assíncrono de endereço. | **ViaCEP API** / Correios |
 | **`plg_fields_telefone`** | `telefone` | Máscara dinâmica 8/9 dígitos, validação de DDD da Anatel e botão para WhatsApp. | **Anatel / WhatsApp API** |
 | **`plg_fields_cpfcnpj`** | `cpfcnpj` | Campo híbrido adaptativo com transição fluida de máscara e validação contextual. | **Receita Federal (PF / PJ)** |
-| **`plg_fields_pix`** | `pix` | Validação multiformato, gerador de QR Code automático e "Pix Copia e Cola" oficial com valor fixo ou livre. | **Banco Central do Brasil (EMVCo / CRC16)** |
+| **`plg_fields_pix`** | `pix` | Multicampo Subform (chave, titular, cidade, valor fixo/livre, txid, descrição), gerador EMVCo e QR Code. | **Banco Central do Brasil (EMVCo / CRC16)** |
 
 ---
 
@@ -142,7 +142,7 @@ document.addEventListener('joomla:cep-found', (e) => {
 ### Instalação e Atualizações no Joomla 6
 
 1. No painel de administração do Joomla 6, acesse **Sistema** > **Instalar** > **Extensões**.
-2. Na aba **Enviar Arquivo Pacote**, envie o arquivo **`pkg_fields_brasil_v1.0.0.zip`**.
+2. Na aba **Enviar Arquivo Pacote**, envie o arquivo **`pkg_fields_brasil_v1.0.0-alpha1.zip`**.
 3. **Habilitação Automática**: Todos os 6 plugins são automaticamente habilitados no banco de dados durante a instalação através do script de pós-instalação (`postflight`).
 4. **Update Server Nativo**: O pacote já vem configurado com servidor de atualização do Joomla (`updates.xml`). Novas versões serão notificadas diretamente em **Sistema** > **Atualizar** > **Extensões**.
 5. Acesse **Conteúdo** > **Campos** (ou **Usuários** > **Campos**), clique em **Novo** e selecione o tipo de campo desejado.

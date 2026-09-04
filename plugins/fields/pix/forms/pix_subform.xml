@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <field
+        name="pix_key"
+        type="text"
+        label="PLG_FIELDS_PIX_SUB_KEY_LABEL"
+        description="PLG_FIELDS_PIX_SUB_KEY_DESC"
+        hint="PLG_FIELDS_PIX_SUB_KEY_HINT"
+        required="true"
+        validate="pix"
+        class="validate-pix joomla-field-pix"
+    />
+
+    <field
+        name="merchant_name"
+        type="text"
+        label="PLG_FIELDS_PIX_SUB_NAME_LABEL"
+        description="PLG_FIELDS_PIX_SUB_NAME_DESC"
+        maxlength="25"
+    />
+
+    <field
+        name="merchant_city"
+        type="text"
+        label="PLG_FIELDS_PIX_SUB_CITY_LABEL"
+        description="PLG_FIELDS_PIX_SUB_CITY_DESC"
+        maxlength="15"
+    />
+
+    <field
+        name="amount_mode"
+        type="list"
+        label="PLG_FIELDS_PIX_SUB_AMOUNT_MODE_LABEL"
+        description="PLG_FIELDS_PIX_SUB_AMOUNT_MODE_DESC"
+        default="none"
+    >
+        <option value="none">PLG_FIELDS_PIX_PARAMS_AMOUNT_MODE_NONE</option>
+        <option value="fixed">PLG_FIELDS_PIX_PARAMS_AMOUNT_MODE_FIXED</option>
+        <option value="free">PLG_FIELDS_PIX_PARAMS_AMOUNT_MODE_FREE</option>
+    </field>
+
+    <field
+        name="amount"
+        type="number"
+        label="PLG_FIELDS_PIX_SUB_AMOUNT_LABEL"
+        description="PLG_FIELDS_PIX_SUB_AMOUNT_DESC"
+        step="0.01"
+        min="0"
+    />
+
+    <field
+        name="txid"
+        type="text"
+        label="PLG_FIELDS_PIX_SUB_TXID_LABEL"
+        description="PLG_FIELDS_PIX_SUB_TXID_DESC"
+        default="***"
+        maxlength="25"
+    />
+
+    <field
+        name="description"
+        type="text"
+        label="PLG_FIELDS_PIX_SUB_DESC_LABEL"
+        description="PLG_FIELDS_PIX_SUB_DESC_DESC"
+        maxlength="50"
+    />
+</form>

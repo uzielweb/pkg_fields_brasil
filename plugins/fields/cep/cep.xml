@@ -7,7 +7,7 @@
     <license>GNU General Public License version 2 or later; see LICENSE</license>
     <authorEmail>uzielweb@gmail.com</authorEmail>
     <authorUrl>https://github.com/uzielweb</authorUrl>
-    <version>1.0.0</version>
+    <version>1.0.0-alpha1</version>
     <description>PLG_FIELDS_CEP_XML_DESCRIPTION</description>
     <namespace path="src">Uziel\Plugin\Fields\Cep</namespace>
     <scriptfile>script.php</scriptfile>

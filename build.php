@@ -10,7 +10,7 @@
  * @license   GNU General Public License version 2 or later; see LICENSE
  */
 
-$version = '1.0.0';
+$version = '1.0.0-alpha1';
 $rootDir = __DIR__;
 $packagesDir = $rootDir . '/packages';
 
