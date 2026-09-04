@@ -78,6 +78,27 @@
             </field>
 
             <field
+                name="qrcode_logo_type"
+                type="list"
+                label="PLG_FIELDS_PIX_PARAMS_QRCODE_LOGO_TYPE_LABEL"
+                description="PLG_FIELDS_PIX_PARAMS_QRCODE_LOGO_TYPE_DESC"
+                default="pix"
+                showon="show_qrcode:1"
+            >
+                <option value="none">PLG_FIELDS_PIX_LOGO_TYPE_NONE</option>
+                <option value="pix">PLG_FIELDS_PIX_LOGO_TYPE_PIX</option>
+                <option value="custom">PLG_FIELDS_PIX_LOGO_TYPE_CUSTOM</option>
+            </field>
+
+            <field
+                name="qrcode_logo"
+                type="media"
+                label="PLG_FIELDS_PIX_PARAMS_QRCODE_LOGO_LABEL"
+                description="PLG_FIELDS_PIX_PARAMS_QRCODE_LOGO_DESC"
+                showon="show_qrcode:1[AND]qrcode_logo_type:custom"
+            />
+
+            <field
                 name="show_copy_button"
                 type="radio"
                 label="PLG_FIELDS_PIX_PARAMS_SHOW_COPY_BUTTON_LABEL"

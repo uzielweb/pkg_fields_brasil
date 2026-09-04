@@ -2,12 +2,12 @@
 <updates>
     <update>
         <name>PKG_FIELDS_BRASIL</name>
-        <description>Brazilian Custom Fields Package for Joomla 6 (v1.0.0-alpha1)</description>
+        <description>Brazilian Custom Fields Package for Joomla 6 (v1.0.0-alpha2)</description>
         <element>pkg_fields_brasil</element>
         <type>package</type>
-        <version>1.0.0-alpha1</version>
+        <version>1.0.0-alpha2</version>
         <downloads>
-            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0-alpha1/pkg_fields_brasil_v1.0.0-alpha1.zip</downloadurl>
+            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0-alpha2/pkg_fields_brasil_v1.0.0-alpha2.zip</downloadurl>
         </downloads>
         <tags>
             <tag>alpha</tag>
@@ -19,13 +19,13 @@
 
     <update>
         <name>PLG_FIELDS_CPF</name>
-        <description>CPF Custom Field Plugin for Joomla 6 (v1.0.0-alpha1)</description>
+        <description>CPF Custom Field Plugin for Joomla 6 (v1.0.0-alpha2)</description>
         <element>cpf</element>
         <type>plugin</type>
         <folder>fields</folder>
-        <version>1.0.0-alpha1</version>
+        <version>1.0.0-alpha2</version>
         <downloads>
-            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0-alpha1/pkg_fields_brasil_v1.0.0-alpha1.zip</downloadurl>
+            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0-alpha2/pkg_fields_brasil_v1.0.0-alpha2.zip</downloadurl>
         </downloads>
         <tags>
             <tag>alpha</tag>
@@ -37,13 +37,13 @@
 
     <update>
         <name>PLG_FIELDS_CNPJ</name>
-        <description>CNPJ Custom Field Plugin for Joomla 6 (v1.0.0-alpha1)</description>
+        <description>CNPJ Custom Field Plugin for Joomla 6 (v1.0.0-alpha2)</description>
         <element>cnpj</element>
         <type>plugin</type>
         <folder>fields</folder>
-        <version>1.0.0-alpha1</version>
+        <version>1.0.0-alpha2</version>
         <downloads>
-            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0-alpha1/pkg_fields_brasil_v1.0.0-alpha1.zip</downloadurl>
+            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0-alpha2/pkg_fields_brasil_v1.0.0-alpha2.zip</downloadurl>
         </downloads>
         <tags>
             <tag>alpha</tag>
@@ -55,13 +55,13 @@
 
     <update>
         <name>PLG_FIELDS_CEP</name>
-        <description>CEP Custom Field Plugin for Joomla 6 (v1.0.0-alpha1)</description>
+        <description>CEP Custom Field Plugin for Joomla 6 (v1.0.0-alpha2)</description>
         <element>cep</element>
         <type>plugin</type>
         <folder>fields</folder>
-        <version>1.0.0-alpha1</version>
+        <version>1.0.0-alpha2</version>
         <downloads>
-            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0-alpha1/pkg_fields_brasil_v1.0.0-alpha1.zip</downloadurl>
+            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0-alpha2/pkg_fields_brasil_v1.0.0-alpha2.zip</downloadurl>
         </downloads>
         <tags>
             <tag>alpha</tag>
@@ -73,13 +73,13 @@
 
     <update>
         <name>PLG_FIELDS_TELEFONE</name>
-        <description>Telefone / WhatsApp Custom Field Plugin for Joomla 6 (v1.0.0-alpha1)</description>
+        <description>Telefone / WhatsApp Custom Field Plugin for Joomla 6 (v1.0.0-alpha2)</description>
         <element>telefone</element>
         <type>plugin</type>
         <folder>fields</folder>
-        <version>1.0.0-alpha1</version>
+        <version>1.0.0-alpha2</version>
         <downloads>
-            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0-alpha1/pkg_fields_brasil_v1.0.0-alpha1.zip</downloadurl>
+            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0-alpha2/pkg_fields_brasil_v1.0.0-alpha2.zip</downloadurl>
         </downloads>
         <tags>
             <tag>alpha</tag>
@@ -91,13 +91,13 @@
 
     <update>
         <name>PLG_FIELDS_CPFCNPJ</name>
-        <description>Hybrid CPF / CNPJ Custom Field Plugin for Joomla 6 (v1.0.0-alpha1)</description>
+        <description>Hybrid CPF / CNPJ Custom Field Plugin for Joomla 6 (v1.0.0-alpha2)</description>
         <element>cpfcnpj</element>
         <type>plugin</type>
         <folder>fields</folder>
-        <version>1.0.0-alpha1</version>
+        <version>1.0.0-alpha2</version>
         <downloads>
-            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0-alpha1/pkg_fields_brasil_v1.0.0-alpha1.zip</downloadurl>
+            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0-alpha2/pkg_fields_brasil_v1.0.0-alpha2.zip</downloadurl>
         </downloads>
         <tags>
             <tag>alpha</tag>
@@ -109,13 +109,13 @@
 
     <update>
         <name>PLG_FIELDS_PIX</name>
-        <description>Chave PIX Multicampo Subform Plugin for Joomla 6 (v1.0.0-alpha1)</description>
+        <description>Chave PIX Multicampo Subform Plugin for Joomla 6 (v1.0.0-alpha2)</description>
         <element>pix</element>
         <type>plugin</type>
         <folder>fields</folder>
-        <version>1.0.0-alpha1</version>
+        <version>1.0.0-alpha2</version>
         <downloads>
-            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0-alpha1/pkg_fields_brasil_v1.0.0-alpha1.zip</downloadurl>
+            <downloadurl type="full" format="zip">https://github.com/uzielweb/pkg_fields_brasil/releases/download/v1.0.0-alpha2/pkg_fields_brasil_v1.0.0-alpha2.zip</downloadurl>
         </downloads>
         <tags>
             <tag>alpha</tag>

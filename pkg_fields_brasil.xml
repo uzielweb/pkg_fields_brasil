@@ -2,7 +2,7 @@
 <extension type="package" method="upgrade">
     <name>PKG_FIELDS_BRASIL</name>
     <packagename>fields_brasil</packagename>
-    <version>1.0.0-alpha1</version>
+    <version>1.0.0-alpha2</version>
     <url>https://github.com/uzielweb/pkg_fields_brasil</url>
     <packager>Uziel Almeida Oliveira</packager>
     <packagerurl>https://github.com/uzielweb</packagerurl>

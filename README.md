@@ -3,7 +3,7 @@
 [![Joomla 6 Compatible](https://img.shields.io/badge/Joomla!-6.x%20%7C%205.x-5091CD?style=flat-square&logo=joomla)](https://www.joomla.org)
 [![PHP Version](https://img.shields.io/badge/PHP-%3E%3D%208.2-777BB4?style=flat-square&logo=php)](https://www.php.net)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg?style=flat-square)](LICENSE)
-[![Release](https://img.shields.io/badge/Release-v1.0.0--alpha1-orange.svg?style=flat-square)](https://github.com/uzielweb/pkg_fields_brasil/releases/tag/v1.0.0-alpha1)
+[![Release](https://img.shields.io/badge/Release-v1.0.0--alpha2-orange.svg?style=flat-square)](https://github.com/uzielweb/pkg_fields_brasil/releases/tag/v1.0.0-alpha2)
 
 ---
 
@@ -70,7 +70,7 @@ The Pix plugin generates valid EMVCo TLV payloads:
 ### Installation & Updates in Joomla 6
 
 1. In the Joomla Administrator panel, navigate to **System** > **Install** > **Extensions**.
-2. Under the **Upload Package File** tab, upload **`pkg_fields_brasil_v1.0.0-alpha1.zip`**.
+2. Under the **Upload Package File** tab, upload **`pkg_fields_brasil_v1.0.0-alpha2.zip`**.
 3. **Auto-Enabled**: All 6 plugins are automatically enabled upon installation via the installer script.
 4. **Update Server**: The package includes native Joomla Update Server integration (`updates.xml`). Future releases will appear directly in Joomla's **System** > **Update** > **Extensions**.
 5. Go to **Content** > **Fields** (or **Users** > **Fields**), click **New**, and select the desired field type.
@@ -142,7 +142,7 @@ document.addEventListener('joomla:cep-found', (e) => {
 ### Instalação e Atualizações no Joomla 6
 
 1. No painel de administração do Joomla 6, acesse **Sistema** > **Instalar** > **Extensões**.
-2. Na aba **Enviar Arquivo Pacote**, envie o arquivo **`pkg_fields_brasil_v1.0.0-alpha1.zip`**.
+2. Na aba **Enviar Arquivo Pacote**, envie o arquivo **`pkg_fields_brasil_v1.0.0-alpha2.zip`**.
 3. **Habilitação Automática**: Todos os 6 plugins são automaticamente habilitados no banco de dados durante a instalação através do script de pós-instalação (`postflight`).
 4. **Update Server Nativo**: O pacote já vem configurado com servidor de atualização do Joomla (`updates.xml`). Novas versões serão notificadas diretamente em **Sistema** > **Atualizar** > **Extensões**.
 5. Acesse **Conteúdo** > **Campos** (ou **Usuários** > **Campos**), clique em **Novo** e selecione o tipo de campo desejado.

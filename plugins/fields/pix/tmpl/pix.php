@@ -10,7 +10,9 @@
 
 \defined('_JEXEC') or die;
 
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Uri\Uri;
 use Uziel\Plugin\Fields\Pix\Helper\PixHelper;
 
 $rawValue = $field->value;
@@ -55,6 +57,8 @@ $defaultMerchantCity = (string) $fieldParams->get('merchant_city', 'SAO PAULO');
 $defaultAmountMode   = (string) $fieldParams->get('amount_mode', 'none');
 $defaultAmount       = (float) $fieldParams->get('default_amount', 0.00);
 $defaultTxid         = (string) $fieldParams->get('txid', '***');
+$defaultLogoType     = (string) $fieldParams->get('qrcode_logo_type', 'pix');
+$defaultCustomLogo   = (string) $fieldParams->get('qrcode_logo', '');
 $showQrCode          = (bool) $fieldParams->get('show_qrcode', 1);
 $showCopyBtn         = (bool) $fieldParams->get('show_copy_button', 1);
 
@@ -76,6 +80,30 @@ foreach ($items as $item) :
     $txid         = trim((string) ($item['txid'] ?? '')) ?: $defaultTxid;
     $description  = trim((string) ($item['description'] ?? ''));
 
+    // Resolve QR Code center logo (per item or field default fallback)
+    $itemLogoType      = (string) ($item['qrcode_logo_type'] ?? 'inherit');
+    $effectiveLogoType = ($itemLogoType === 'inherit' || $itemLogoType === '') ? $defaultLogoType : $itemLogoType;
+    $logoUrl           = '';
+
+    if ($effectiveLogoType === 'pix') {
+        $logoUrl = Uri::root(true) . '/media/plg_fields_pix/images/pix-icon.svg';
+    } elseif ($effectiveLogoType === 'custom') {
+        $rawLogo = trim((string) ($item['qrcode_logo'] ?? ''));
+        if ($rawLogo === '') {
+            $rawLogo = $defaultCustomLogo;
+        }
+
+        if ($rawLogo !== '') {
+            $clean = HTMLHelper::_('cleanImageURL', $rawLogo);
+            $url   = $clean->url ?? '';
+            if ($url) {
+                $logoUrl = (str_starts_with($url, 'http://') || str_starts_with($url, 'https://'))
+                    ? $url
+                    : Uri::root(true) . '/' . ltrim($url, '/');
+            }
+        }
+    }
+
     $initialAmount = null;
     if ($amountMode === 'fixed' && $itemAmount > 0) {
         $initialAmount = $itemAmount;
@@ -92,6 +120,7 @@ foreach ($items as $item) :
      data-merchant-city="<?php echo htmlspecialchars($merchantCity, ENT_QUOTES, 'UTF-8'); ?>"
      data-txid="<?php echo htmlspecialchars($txid, ENT_QUOTES, 'UTF-8'); ?>"
      data-amount-mode="<?php echo htmlspecialchars($amountMode, ENT_QUOTES, 'UTF-8'); ?>"
+     data-logo-url="<?php echo htmlspecialchars($logoUrl, ENT_QUOTES, 'UTF-8'); ?>"
      data-payload="<?php echo htmlspecialchars($initialPayload, ENT_QUOTES, 'UTF-8'); ?>">
 
     <div class="d-flex align-items-center justify-content-between mb-2">

@@ -64,4 +64,25 @@
         description="PLG_FIELDS_PIX_SUB_DESC_DESC"
         maxlength="50"
     />
+
+    <field
+        name="qrcode_logo_type"
+        type="list"
+        label="PLG_FIELDS_PIX_SUB_QRCODE_LOGO_TYPE_LABEL"
+        description="PLG_FIELDS_PIX_SUB_QRCODE_LOGO_TYPE_DESC"
+        default="inherit"
+    >
+        <option value="inherit">PLG_FIELDS_PIX_LOGO_TYPE_INHERIT</option>
+        <option value="none">PLG_FIELDS_PIX_LOGO_TYPE_NONE</option>
+        <option value="pix">PLG_FIELDS_PIX_LOGO_TYPE_PIX</option>
+        <option value="custom">PLG_FIELDS_PIX_LOGO_TYPE_CUSTOM</option>
+    </field>
+
+    <field
+        name="qrcode_logo"
+        type="media"
+        label="PLG_FIELDS_PIX_SUB_QRCODE_LOGO_LABEL"
+        description="PLG_FIELDS_PIX_SUB_QRCODE_LOGO_DESC"
+        showon="qrcode_logo_type:custom"
+    />
 </form>

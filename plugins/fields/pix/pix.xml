@@ -7,7 +7,7 @@
     <license>GNU General Public License version 2 or later; see LICENSE</license>
     <authorEmail>uzielweb@gmail.com</authorEmail>
     <authorUrl>https://github.com/uzielweb</authorUrl>
-    <version>1.0.0-alpha1</version>
+    <version>1.0.0-alpha2</version>
     <description>PLG_FIELDS_PIX_XML_DESCRIPTION</description>
     <namespace path="src">Uziel\Plugin\Fields\Pix</namespace>
     <scriptfile>script.php</scriptfile>
@@ -22,6 +22,7 @@
     </files>
     <media destination="plg_fields_pix" folder="media">
         <filename>joomla.asset.json</filename>
+        <folder>images</folder>
         <folder>js</folder>
     </media>
     <languages>
@@ -94,6 +95,27 @@
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
+
+                <field
+                    name="qrcode_logo_type"
+                    type="list"
+                    label="PLG_FIELDS_PIX_PARAMS_QRCODE_LOGO_TYPE_LABEL"
+                    description="PLG_FIELDS_PIX_PARAMS_QRCODE_LOGO_TYPE_DESC"
+                    default="pix"
+                    showon="show_qrcode:1"
+                >
+                    <option value="none">PLG_FIELDS_PIX_LOGO_TYPE_NONE</option>
+                    <option value="pix">PLG_FIELDS_PIX_LOGO_TYPE_PIX</option>
+                    <option value="custom">PLG_FIELDS_PIX_LOGO_TYPE_CUSTOM</option>
+                </field>
+
+                <field
+                    name="qrcode_logo"
+                    type="media"
+                    label="PLG_FIELDS_PIX_PARAMS_QRCODE_LOGO_LABEL"
+                    description="PLG_FIELDS_PIX_PARAMS_QRCODE_LOGO_DESC"
+                    showon="show_qrcode:1[AND]qrcode_logo_type:custom"
+                />
 
                 <field
                     name="show_copy_button"

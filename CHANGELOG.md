@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0-alpha2] - 2026-09-04
+
+### Added
+- **Pix QR Code Center Logo Integration**:
+  - Center logo customization on the dynamic QR code: choose between official Pix SVG icon, no logo, or custom image file.
+  - Global default configurable in plugin/field parameters (`params/pix.xml` and `pix.xml`).
+  - Item-level override or inheritance in the article subform (`forms/pix_subform.xml`).
+  - Bundled official Brazilian Central Bank (BACEN) vector Pix SVG icon (`#32BCAD`) at `media/images/pix-icon.svg`.
+  - QR Code error correction set to `Q` (25% error recovery) with canvas badge composition for high scanning reliability.
+  - Full bilingual localization (`pt-BR` and `en-GB`).
+
 ## [1.0.0-alpha1] - 2026-09-04
 
 ### Added
