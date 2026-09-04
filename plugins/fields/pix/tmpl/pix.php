@@ -126,7 +126,7 @@ foreach ($items as $item) :
         $initialAmount = $itemAmount;
     }
 
-    $initialPayload = PixHelper::generatePayload($key, $merchantName, $merchantCity, $initialAmount, $txid);
+    $initialPayload = PixHelper::generatePayload($key, $merchantName, $merchantCity, $initialAmount, $txid, $description);
     $keyType         = PixHelper::getKeyType($key) ?: 'pix';
     $qrcodeScriptUrl = Uri::root(true) . '/media/plg_fields_pix/js/qrcode.min.js';
 ?>
@@ -134,6 +134,7 @@ foreach ($items as $item) :
      data-pix-key="<?php echo htmlspecialchars($key, ENT_QUOTES, 'UTF-8'); ?>"
      data-merchant-name="<?php echo htmlspecialchars($merchantName, ENT_QUOTES, 'UTF-8'); ?>"
      data-merchant-city="<?php echo htmlspecialchars($merchantCity, ENT_QUOTES, 'UTF-8'); ?>"
+     data-description="<?php echo htmlspecialchars($description, ENT_QUOTES, 'UTF-8'); ?>"
      data-txid="<?php echo htmlspecialchars($txid, ENT_QUOTES, 'UTF-8'); ?>"
      data-amount-mode="<?php echo htmlspecialchars($amountMode, ENT_QUOTES, 'UTF-8'); ?>"
      data-logo-url="<?php echo htmlspecialchars($logoUrl, ENT_QUOTES, 'UTF-8'); ?>"

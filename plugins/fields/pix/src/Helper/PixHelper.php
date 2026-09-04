@@ -170,6 +170,7 @@ class PixHelper
      * @param   string       $merchantCity  Beneficiary City (max 15 characters).
      * @param   float|null   $amount        Transaction amount (optional).
      * @param   string       $txid          Transaction identifier (default '***').
+     * @param   string       $description   Transaction description / message (optional, max 40 characters).
      * @return  string
      */
     public static function generatePayload(
@@ -177,7 +178,8 @@ class PixHelper
         string $merchantName = 'BENEFICIARIO',
         string $merchantCity = 'SAO PAULO',
         ?float $amount = null,
-        string $txid = '***'
+        string $txid = '***',
+        string $description = ''
     ): string {
         $type = self::getKeyType($key);
         if (!$type) {
@@ -187,9 +189,16 @@ class PixHelper
         $normalizedKey = self::normalizeKey($key, $type);
 
         // Merchant Account Information (Tag 26)
-        $gui  = self::formatTlv('00', 'br.gov.bcb.pix');
-        $keyTlv = self::formatTlv('01', $normalizedKey);
-        $mai  = self::formatTlv('26', $gui . $keyTlv);
+        $gui     = self::formatTlv('00', 'br.gov.bcb.pix');
+        $keyTlv  = self::formatTlv('01', $normalizedKey);
+        $descTlv = '';
+
+        if (trim($description) !== '') {
+            $cleanDesc = substr(iconv('UTF-8', 'ASCII//TRANSLIT', trim($description)), 0, 40);
+            $descTlv   = self::formatTlv('02', $cleanDesc);
+        }
+
+        $mai = self::formatTlv('26', $gui . $keyTlv . $descTlv);
 
         // Sanitize Name and City (BACEN limits and ASCII characters)
         $cleanName = strtoupper(iconv('UTF-8', 'ASCII//TRANSLIT', substr($merchantName, 0, 25)));

@@ -44,9 +44,14 @@
   };
 
   // Generates Pix Copia e Cola EMVCo string on the client side
-  const buildPixPayload = (key, name, city, amount, txid = '***') => {
+  const buildPixPayload = (key, name, city, amount, txid = '***', description = '') => {
     const normKey = normalizeKey(key);
-    const mai = formatTlv('26', formatTlv('00', 'br.gov.bcb.pix') + formatTlv('01', normKey));
+    let descTlv = '';
+    if (description && description.trim()) {
+      const cleanDesc = description.trim().substring(0, 40);
+      descTlv = formatTlv('02', cleanDesc);
+    }
+    const mai = formatTlv('26', formatTlv('00', 'br.gov.bcb.pix') + formatTlv('01', normKey) + descTlv);
     const cleanName = (name || 'BENEFICIARIO').substring(0, 25).toUpperCase();
     const cleanCity = (city || 'SAO PAULO').substring(0, 15).toUpperCase();
     const cleanTxid = (txid || '***').substring(0, 25);
@@ -147,6 +152,7 @@
       const key = card.dataset.pixKey;
       const name = card.dataset.merchantName;
       const city = card.dataset.merchantCity;
+      const description = card.dataset.description || '';
       const txid = card.dataset.txid;
       const logoUrl = card.dataset.logoUrl || '';
       const qrcodeScript = card.dataset.qrcodeScript || '';
@@ -157,7 +163,7 @@
       const feedback = card.querySelector('.pix-copy-feedback');
 
       const updatePix = (amount) => {
-        const payload = buildPixPayload(key, name, city, amount, txid);
+        const payload = buildPixPayload(key, name, city, amount, txid, description);
         if (payloadInput) {
           payloadInput.value = payload;
         }

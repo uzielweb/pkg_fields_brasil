@@ -227,6 +227,18 @@ namespace {
     assertCondition(str_contains($subformPayload, '5406199.90'), 'Subform payload contains custom amount 199.90');
     assertCondition(str_contains($subformPayload, '5912LOJA VIRTUAL'), 'Subform payload contains custom merchant name');
 
+    // Test payload with Description (Tag 26 subtag 02)
+    $payloadWithDesc = PixHelper::generatePayload(
+        'contato@exemplo.com.br',
+        'UZIEL WEB',
+        'SAO PAULO',
+        5.50,
+        '***',
+        'Doacao Projeto'
+    );
+    assertCondition(str_contains($payloadWithDesc, '0214Doacao Projeto'), 'Payload contains description tag 02 inside Tag 26');
+    assertCondition($payloadWithDesc === '00020126620014br.gov.bcb.pix0122contato@exemplo.com.br0214Doacao Projeto52040000530398654045.505802BR5909UZIEL WEB6009SAO PAULO62070503***6304897C', 'Payload matches exact BACEN EMVCo reference with description and CRC16');
+
     // Multiple repeatable rows test
     $repeatableJson = json_encode([
         'row0' => ['pix_key' => 'contato@empresa.com', 'amount_mode' => 'none'],
