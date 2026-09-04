@@ -10,11 +10,19 @@
 
 \defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
 use Joomla\Registry\Registry;
 use Uziel\Plugin\Fields\Pix\Helper\PixHelper;
+
+$doc = Factory::getApplication()->getDocument();
+if ($doc instanceof \Joomla\CMS\Document\HtmlDocument) {
+    $wa = $doc->getWebAssetManager();
+    $wa->registerAndUseScript('fields.pix.qrcode', 'plg_fields_pix/qrcode.min.js', [], ['defer' => true]);
+    $wa->registerAndUseScript('fields.pix', 'plg_fields_pix/pix.js', [], ['defer' => true], ['fields.pix.qrcode']);
+}
 
 $rawValue = $field->value;
 
@@ -161,9 +169,19 @@ foreach ($items as $item) :
         </div>
     <?php endif; ?>
 
-    <?php if ($showQrCode) : ?>
+    <?php if ($showQrCode) : 
+        $uniqueId = 'pix_qr_' . (int) $field->id . '_' . substr(md5($key . uniqid('', true)), 0, 8);
+    ?>
         <div class="pix-qrcode-wrapper text-center my-2 p-2 bg-light rounded">
-            <div class="pix-qrcode-container" style="min-height: 180px; display: flex; align-items: center; justify-content: center;"></div>
+            <div class="field-pix-qrcode-wrapper position-relative d-inline-block" style="position: relative; display: inline-block;">
+                <div id="<?php echo $uniqueId; ?>" class="pix-qrcode-container" data-unique-id="<?php echo $uniqueId; ?>" style="min-height: 200px; min-width: 200px; display: flex; align-items: center; justify-content: center;"></div>
+                <?php if (!empty($logoUrl)) : ?>
+                    <img src="<?php echo htmlspecialchars($logoUrl, ENT_QUOTES, 'UTF-8'); ?>"
+                         alt="Pix Logo"
+                         class="pix-qrcode-logo"
+                         style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 45px; height: 45px; border-radius: 6px; border: 3px solid #ffffff; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.15); pointer-events: none;" />
+                <?php endif; ?>
+            </div>
             <small class="text-muted d-block mt-1"><?php echo Text::_('PLG_FIELDS_PIX_SCAN_INSTRUCTION'); ?></small>
         </div>
     <?php endif; ?>

@@ -70,71 +70,44 @@
   };
 
   /**
-   * Renders QR Code onto a canvas, optionally overlaying a centered logo with a white badge background.
+   * Loads qrcode.min.js dynamically if not already available in window
    */
-  const renderQrWithLogo = (text, logoUrl = '', size = 200, container) => {
-    if (!container) return;
+  const ensureQrCodeLoaded = (callback) => {
+    if (typeof QRCode !== 'undefined') {
+      callback();
+      return;
+    }
 
-    const canvas = document.createElement('canvas');
-    canvas.width = size;
-    canvas.height = size;
-    canvas.className = 'img-fluid rounded shadow-xs';
-    canvas.style.maxWidth = `${size}px`;
-    canvas.style.height = 'auto';
-    const ctx = canvas.getContext('2d');
+    if (!document.getElementById('pix_qrcode_js')) {
+      const script = document.createElement('script');
+      script.id = 'pix_qrcode_js';
+      const rootMeta = document.querySelector('meta[name="joomla:root-url"]');
+      const rootUrl = rootMeta && rootMeta.content ? rootMeta.content.replace(/\/$/, '') : '';
+      script.src = rootUrl + '/media/plg_fields_pix/js/qrcode.min.js';
+      script.onload = () => {
+        document.dispatchEvent(new Event('pix_qrcode_loaded'));
+      };
+      document.head.appendChild(script);
+    }
+    document.addEventListener('pix_qrcode_loaded', callback, { once: true });
+  };
 
-    const ecc = logoUrl ? 'Q' : 'M';
-    const qrImg = new Image();
-    qrImg.crossOrigin = 'anonymous';
-    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&margin=2&ecc=${ecc}&data=${encodeURIComponent(text)}`;
-
-    qrImg.onload = () => {
-      ctx.drawImage(qrImg, 0, 0, size, size);
-
-      if (logoUrl) {
-        const logoImg = new Image();
-        logoImg.crossOrigin = 'anonymous';
-        logoImg.src = logoUrl;
-
-        logoImg.onload = () => {
-          const logoSize = Math.round(size * 0.22);
-          const center = (size - logoSize) / 2;
-          const bgPadding = 4;
-          const bgSize = logoSize + (bgPadding * 2);
-          const bgPos = center - bgPadding;
-          const radius = 6;
-
-          // Draw white badge background behind logo
-          ctx.fillStyle = '#FFFFFF';
-          ctx.beginPath();
-          if (typeof ctx.roundRect === 'function') {
-            ctx.roundRect(bgPos, bgPos, bgSize, bgSize, radius);
-          } else {
-            ctx.rect(bgPos, bgPos, bgSize, bgSize);
-          }
-          ctx.fill();
-          ctx.strokeStyle = '#CBD5E1';
-          ctx.lineWidth = 1;
-          ctx.stroke();
-
-          // Draw logo centered
-          ctx.drawImage(logoImg, center, center, logoSize, logoSize);
-        };
-      }
-    };
-
-    qrImg.onerror = () => {
-      const fallbackImg = document.createElement('img');
-      fallbackImg.src = qrImg.src;
-      fallbackImg.alt = 'QR Code Pix';
-      fallbackImg.className = 'img-fluid rounded shadow-xs';
-      fallbackImg.style.maxWidth = `${size}px`;
-      container.innerHTML = '';
-      container.appendChild(fallbackImg);
-    };
-
+  /**
+   * Renders QR Code using the bundled rock-solid QRCode library (offline, no external APIs)
+   */
+  const renderQrCode = (container, text, size = 200) => {
+    if (!container || !text) return;
     container.innerHTML = '';
-    container.appendChild(canvas);
+    try {
+      new QRCode(container, {
+        text: text,
+        width: size,
+        height: size,
+        correctLevel: QRCode.CorrectLevel.Q
+      });
+    } catch (e) {
+      console.error('Error generating Pix QR Code:', e);
+    }
   };
 
   // Validates Pix Key in Joomla FormValidator
@@ -184,14 +157,14 @@
           payloadInput.value = payload;
         }
         if (qrContainer) {
-          renderQrWithLogo(payload, logoUrl, 200, qrContainer);
+          ensureQrCodeLoaded(() => renderQrCode(qrContainer, payload, 200));
         }
       };
 
       // Initial render of QR code
       const initialPayload = card.dataset.payload || (payloadInput ? payloadInput.value : '');
       if (qrContainer && initialPayload) {
-        renderQrWithLogo(initialPayload, logoUrl, 200, qrContainer);
+        ensureQrCodeLoaded(() => renderQrCode(qrContainer, initialPayload, 200));
       }
 
       // Handle real-time amount changes (Free Amount mode)
