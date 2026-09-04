@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="fields" method="upgrade">
+    <name>PLG_FIELDS_PIX</name>
+    <author>Uziel Almeida Oliveira</author>
+    <creationDate>2026-09</creationDate>
+    <copyright>(C) 2026 Uziel Almeida Oliveira. Todos os direitos reservados.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE</license>
+    <authorEmail>uzielweb@gmail.com</authorEmail>
+    <authorUrl>https://github.com/uzielweb</authorUrl>
+    <version>1.0.0</version>
+    <description>PLG_FIELDS_PIX_XML_DESCRIPTION</description>
+    <namespace path="src">Uziel\Plugin\Fields\Pix</namespace>
+    <files>
+        <folder>params</folder>
+        <folder>rules</folder>
+        <folder plugin="pix">services</folder>
+        <folder>src</folder>
+        <folder>tmpl</folder>
+    </files>
+    <media destination="plg_fields_pix" folder="media">
+        <filename>joomla.asset.json</filename>
+        <folder>js</folder>
+    </media>
+    <languages>
+        <language tag="pt-BR">language/pt-BR/plg_fields_pix.ini</language>
+        <language tag="pt-BR">language/pt-BR/plg_fields_pix.sys.ini</language>
+        <language tag="en-GB">language/en-GB/plg_fields_pix.ini</language>
+        <language tag="en-GB">language/en-GB/plg_fields_pix.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="merchant_name"
+                    type="text"
+                    label="PLG_FIELDS_PIX_PARAMS_MERCHANT_NAME_LABEL"
+                    description="PLG_FIELDS_PIX_PARAMS_MERCHANT_NAME_DESC"
+                    default="BENEFICIARIO"
+                    maxlength="25"
+                />
+
+                <field
+                    name="merchant_city"
+                    type="text"
+                    label="PLG_FIELDS_PIX_PARAMS_MERCHANT_CITY_LABEL"
+                    description="PLG_FIELDS_PIX_PARAMS_MERCHANT_CITY_DESC"
+                    default="SAO PAULO"
+                    maxlength="15"
+                />
+
+                <field
+                    name="amount_mode"
+                    type="list"
+                    label="PLG_FIELDS_PIX_PARAMS_AMOUNT_MODE_LABEL"
+                    description="PLG_FIELDS_PIX_PARAMS_AMOUNT_MODE_DESC"
+                    default="free"
+                >
+                    <option value="none">PLG_FIELDS_PIX_PARAMS_AMOUNT_MODE_NONE</option>
+                    <option value="fixed">PLG_FIELDS_PIX_PARAMS_AMOUNT_MODE_FIXED</option>
+                    <option value="free">PLG_FIELDS_PIX_PARAMS_AMOUNT_MODE_FREE</option>
+                </field>
+
+                <field
+                    name="default_amount"
+                    type="number"
+                    label="PLG_FIELDS_PIX_PARAMS_DEFAULT_AMOUNT_LABEL"
+                    description="PLG_FIELDS_PIX_PARAMS_DEFAULT_AMOUNT_DESC"
+                    default="0.00"
+                    step="0.01"
+                    min="0"
+                />
+
+                <field
+                    name="txid"
+                    type="text"
+                    label="PLG_FIELDS_PIX_PARAMS_TXID_LABEL"
+                    description="PLG_FIELDS_PIX_PARAMS_TXID_DESC"
+                    default="***"
+                    maxlength="25"
+                />
+
+                <field
+                    name="show_qrcode"
+                    type="radio"
+                    label="PLG_FIELDS_PIX_PARAMS_SHOW_QRCODE_LABEL"
+                    description="PLG_FIELDS_PIX_PARAMS_SHOW_QRCODE_DESC"
+                    layout="joomla.form.field.radio.switcher"
+                    default="1"
+                    filter="integer"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field
+                    name="show_copy_button"
+                    type="radio"
+                    label="PLG_FIELDS_PIX_PARAMS_SHOW_COPY_BUTTON_LABEL"
+                    description="PLG_FIELDS_PIX_PARAMS_SHOW_COPY_BUTTON_DESC"
+                    layout="joomla.form.field.radio.switcher"
+                    default="1"
+                    filter="integer"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="package" method="upgrade">
+    <name>PKG_FIELDS_BRASIL</name>
+    <packagename>fields_brasil</packagename>
+    <version>1.0.0</version>
+    <url>https://github.com/uzielweb/pkg_fields_brasil</url>
+    <packager>Uziel Almeida Oliveira</packager>
+    <packagerurl>https://github.com/uzielweb</packagerurl>
+    <description>PKG_FIELDS_BRASIL_XML_DESCRIPTION</description>
+    <files folder="packages">
+        <file type="plugin" id="cpf" group="fields">plg_fields_cpf.zip</file>
+        <file type="plugin" id="cnpj" group="fields">plg_fields_cnpj.zip</file>
+        <file type="plugin" id="cep" group="fields">plg_fields_cep.zip</file>
+        <file type="plugin" id="telefone" group="fields">plg_fields_telefone.zip</file>
+        <file type="plugin" id="cpfcnpj" group="fields">plg_fields_cpfcnpj.zip</file>
+        <file type="plugin" id="pix" group="fields">plg_fields_pix.zip</file>
+    </files>
+    <languages folder="language">
+        <language tag="pt-BR">pt-BR/pkg_fields_brasil.sys.ini</language>
+        <language tag="en-GB">en-GB/pkg_fields_brasil.sys.ini</language>
+    </languages>
+</extension>

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "plg_fields_cnpj",
+  "version": "1.0.0",
+  "description": "Joomla Fields CNPJ Assets",
+  "license": "GPL-2.0-or-later",
+  "assets": [
+    {
+      "name": "fields.cnpj",
+      "type": "script",
+      "uri": "plg_fields_cnpj/cnpj.js",
+      "dependencies": [
+        "core",
+        "form.validate"
+      ],
+      "attributes": {
+        "defer": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="fields" method="upgrade">
+    <name>PLG_FIELDS_TELEFONE</name>
+    <author>Uziel Almeida Oliveira</author>
+    <creationDate>2026-09</creationDate>
+    <copyright>(C) 2026 Uziel Almeida Oliveira. Todos os direitos reservados.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE</license>
+    <authorEmail>uzielweb@gmail.com</authorEmail>
+    <authorUrl>https://github.com/uzielweb</authorUrl>
+    <version>1.0.0</version>
+    <description>PLG_FIELDS_TELEFONE_XML_DESCRIPTION</description>
+    <namespace path="src">Uziel\Plugin\Fields\Telefone</namespace>
+    <files>
+        <folder>params</folder>
+        <folder>rules</folder>
+        <folder plugin="telefone">services</folder>
+        <folder>src</folder>
+        <folder>tmpl</folder>
+    </files>
+    <media destination="plg_fields_telefone" folder="media">
+        <filename>joomla.asset.json</filename>
+        <folder>js</folder>
+    </media>
+    <languages>
+        <language tag="pt-BR">language/pt-BR/plg_fields_telefone.ini</language>
+        <language tag="pt-BR">language/pt-BR/plg_fields_telefone.sys.ini</language>
+        <language tag="en-GB">language/en-GB/plg_fields_telefone.ini</language>
+        <language tag="en-GB">language/en-GB/plg_fields_telefone.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="apply_mask"
+                    type="radio"
+                    label="PLG_FIELDS_TELEFONE_PARAMS_APPLY_MASK_LABEL"
+                    description="PLG_FIELDS_TELEFONE_PARAMS_APPLY_MASK_DESC"
+                    layout="joomla.form.field.radio.switcher"
+                    default="1"
+                    filter="integer"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field
+                    name="display_type"
+                    type="list"
+                    label="PLG_FIELDS_TELEFONE_PARAMS_DISPLAY_TYPE_LABEL"
+                    description="PLG_FIELDS_TELEFONE_PARAMS_DISPLAY_TYPE_DESC"
+                    default="whatsapp_btn"
+                >
+                    <option value="formatted">PLG_FIELDS_TELEFONE_PARAMS_DISPLAY_TYPE_FORMATTED</option>
+                    <option value="tel_link">PLG_FIELDS_TELEFONE_PARAMS_DISPLAY_TYPE_TEL_LINK</option>
+                    <option value="whatsapp_btn">PLG_FIELDS_TELEFONE_PARAMS_DISPLAY_TYPE_WHATSAPP_BTN</option>
+                </field>
+
+                <field
+                    name="whatsapp_message"
+                    type="text"
+                    label="PLG_FIELDS_TELEFONE_PARAMS_WHATSAPP_MSG_LABEL"
+                    description="PLG_FIELDS_TELEFONE_PARAMS_WHATSAPP_MSG_DESC"
+                />
+
+                <field
+                    name="whatsapp_btn_class"
+                    type="text"
+                    label="PLG_FIELDS_TELEFONE_PARAMS_WHATSAPP_CLASS_LABEL"
+                    description="PLG_FIELDS_TELEFONE_PARAMS_WHATSAPP_CLASS_DESC"
+                    default="btn btn-success btn-sm"
+                />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

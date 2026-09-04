@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="fields" method="upgrade">
+    <name>PLG_FIELDS_CEP</name>
+    <author>Uziel Almeida Oliveira</author>
+    <creationDate>2026-09</creationDate>
+    <copyright>(C) 2026 Uziel Almeida Oliveira. Todos os direitos reservados.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE</license>
+    <authorEmail>uzielweb@gmail.com</authorEmail>
+    <authorUrl>https://github.com/uzielweb</authorUrl>
+    <version>1.0.0</version>
+    <description>PLG_FIELDS_CEP_XML_DESCRIPTION</description>
+    <namespace path="src">Uziel\Plugin\Fields\Cep</namespace>
+    <files>
+        <folder>params</folder>
+        <folder>rules</folder>
+        <folder plugin="cep">services</folder>
+        <folder>src</folder>
+        <folder>tmpl</folder>
+    </files>
+    <media destination="plg_fields_cep" folder="media">
+        <filename>joomla.asset.json</filename>
+        <folder>js</folder>
+    </media>
+    <languages>
+        <language tag="pt-BR">language/pt-BR/plg_fields_cep.ini</language>
+        <language tag="pt-BR">language/pt-BR/plg_fields_cep.sys.ini</language>
+        <language tag="en-GB">language/en-GB/plg_fields_cep.ini</language>
+        <language tag="en-GB">language/en-GB/plg_fields_cep.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="apply_mask"
+                    type="radio"
+                    label="PLG_FIELDS_CEP_PARAMS_APPLY_MASK_LABEL"
+                    description="PLG_FIELDS_CEP_PARAMS_APPLY_MASK_DESC"
+                    layout="joomla.form.field.radio.switcher"
+                    default="1"
+                    filter="integer"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field
+                    name="enable_lookup"
+                    type="radio"
+                    label="PLG_FIELDS_CEP_PARAMS_ENABLE_LOOKUP_LABEL"
+                    description="PLG_FIELDS_CEP_PARAMS_ENABLE_LOOKUP_DESC"
+                    layout="joomla.form.field.radio.switcher"
+                    default="1"
+                    filter="integer"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field
+                    name="show_map"
+                    type="radio"
+                    label="PLG_FIELDS_CEP_PARAMS_SHOW_MAP_LABEL"
+                    description="PLG_FIELDS_CEP_PARAMS_SHOW_MAP_DESC"
+                    layout="joomla.form.field.radio.switcher"
+                    default="0"
+                    filter="integer"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

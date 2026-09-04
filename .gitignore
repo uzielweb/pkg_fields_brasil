@@ -1,0 +1,26 @@
+# Development and IDE files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Operating System
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+._*
+
+# Logs and temporary files
+*.log
+scratch/
+tmp/
+cache/
+
+# Built zip archives (distributed via GitHub Releases)
+packages/*.zip
+*.zip

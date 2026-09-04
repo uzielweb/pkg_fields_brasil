@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="fieldparams">
+        <fieldset name="fieldparams">
+            <field
+                name="apply_mask"
+                type="radio"
+                label="PLG_FIELDS_CEP_PARAMS_APPLY_MASK_LABEL"
+                description="PLG_FIELDS_CEP_PARAMS_APPLY_MASK_DESC"
+                layout="joomla.form.field.radio.switcher"
+                default="1"
+                filter="integer"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+
+            <field
+                name="enable_lookup"
+                type="radio"
+                label="PLG_FIELDS_CEP_PARAMS_ENABLE_LOOKUP_LABEL"
+                description="PLG_FIELDS_CEP_PARAMS_ENABLE_LOOKUP_DESC"
+                layout="joomla.form.field.radio.switcher"
+                default="1"
+                filter="integer"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+
+            <field
+                name="target_street"
+                type="text"
+                label="PLG_FIELDS_CEP_PARAMS_TARGET_STREET_LABEL"
+                description="PLG_FIELDS_CEP_PARAMS_TARGET_STREET_DESC"
+                hint="logradouro, endereco, rua"
+            />
+
+            <field
+                name="target_neighborhood"
+                type="text"
+                label="PLG_FIELDS_CEP_PARAMS_TARGET_NEIGHBORHOOD_LABEL"
+                description="PLG_FIELDS_CEP_PARAMS_TARGET_NEIGHBORHOOD_DESC"
+                hint="bairro"
+            />
+
+            <field
+                name="target_city"
+                type="text"
+                label="PLG_FIELDS_CEP_PARAMS_TARGET_CITY_LABEL"
+                description="PLG_FIELDS_CEP_PARAMS_TARGET_CITY_DESC"
+                hint="cidade, municipio"
+            />
+
+            <field
+                name="target_state"
+                type="text"
+                label="PLG_FIELDS_CEP_PARAMS_TARGET_STATE_LABEL"
+                description="PLG_FIELDS_CEP_PARAMS_TARGET_STATE_DESC"
+                hint="uf, estado"
+            />
+
+            <field
+                name="target_complement"
+                type="text"
+                label="PLG_FIELDS_CEP_PARAMS_TARGET_COMPLEMENT_LABEL"
+                description="PLG_FIELDS_CEP_PARAMS_TARGET_COMPLEMENT_DESC"
+                hint="complemento"
+            />
+
+            <field
+                name="show_map"
+                type="radio"
+                label="PLG_FIELDS_CEP_PARAMS_SHOW_MAP_LABEL"
+                description="PLG_FIELDS_CEP_PARAMS_SHOW_MAP_DESC"
+                layout="joomla.form.field.radio.switcher"
+                default="0"
+                filter="integer"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+        </fieldset>
+    </fields>
+</form>

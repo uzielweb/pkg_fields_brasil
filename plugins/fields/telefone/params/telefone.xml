@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="fieldparams">
+        <fieldset name="fieldparams">
+            <field
+                name="apply_mask"
+                type="radio"
+                label="PLG_FIELDS_TELEFONE_PARAMS_APPLY_MASK_LABEL"
+                description="PLG_FIELDS_TELEFONE_PARAMS_APPLY_MASK_DESC"
+                layout="joomla.form.field.radio.switcher"
+                default="1"
+                filter="integer"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+
+            <field
+                name="display_type"
+                type="list"
+                label="PLG_FIELDS_TELEFONE_PARAMS_DISPLAY_TYPE_LABEL"
+                description="PLG_FIELDS_TELEFONE_PARAMS_DISPLAY_TYPE_DESC"
+                default="whatsapp_btn"
+            >
+                <option value="formatted">PLG_FIELDS_TELEFONE_PARAMS_DISPLAY_TYPE_FORMATTED</option>
+                <option value="tel_link">PLG_FIELDS_TELEFONE_PARAMS_DISPLAY_TYPE_TEL_LINK</option>
+                <option value="whatsapp_btn">PLG_FIELDS_TELEFONE_PARAMS_DISPLAY_TYPE_WHATSAPP_BTN</option>
+            </field>
+
+            <field
+                name="whatsapp_message"
+                type="text"
+                label="PLG_FIELDS_TELEFONE_PARAMS_WHATSAPP_MSG_LABEL"
+                description="PLG_FIELDS_TELEFONE_PARAMS_WHATSAPP_MSG_DESC"
+            />
+
+            <field
+                name="whatsapp_btn_class"
+                type="text"
+                label="PLG_FIELDS_TELEFONE_PARAMS_WHATSAPP_CLASS_LABEL"
+                description="PLG_FIELDS_TELEFONE_PARAMS_WHATSAPP_CLASS_DESC"
+                default="btn btn-success btn-sm"
+            />
+        </fieldset>
+    </fields>
+</form>
