@@ -15,6 +15,7 @@ use Joomla\CMS\Form\Form;
 use Joomla\CMS\Form\FormHelper;
 use Joomla\Component\Fields\Administrator\Plugin\FieldsPlugin;
 use Joomla\Event\SubscriberInterface;
+use Joomla\Registry\Registry;
 
 \defined('_JEXEC') or die;
 
@@ -25,6 +26,36 @@ use Joomla\Event\SubscriberInterface;
  */
 final class Pix extends FieldsPlugin implements SubscriberInterface
 {
+    /**
+     * Returns the configured params for a given field merged with plugin defaults.
+     *
+     * @param   object  $field  The field object.
+     *
+     * @return  Registry
+     */
+    public function getParamsFromField($field): Registry
+    {
+        $params = (isset($this->params) && $this->params instanceof Registry)
+            ? clone $this->params
+            : new Registry($this->params ?? null);
+
+        if (isset($field->fieldparams)) {
+            if ($field->fieldparams instanceof Registry) {
+                $params->merge($field->fieldparams);
+            } elseif (\is_string($field->fieldparams) || \is_array($field->fieldparams)) {
+                $params->merge(new Registry($field->fieldparams));
+            }
+        } elseif (isset($field->params)) {
+            if ($field->params instanceof Registry) {
+                $params->merge($field->params);
+            } elseif (\is_string($field->params) || \is_array($field->params)) {
+                $params->merge(new Registry($field->params));
+            }
+        }
+
+        return $params;
+    }
+
     /**
      * Transforms the field into a Subform DOM element with structured Pix fields.
      *

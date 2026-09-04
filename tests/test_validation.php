@@ -20,7 +20,67 @@ namespace Joomla\CMS\Form {
 
 namespace Joomla\Registry {
     if (!class_exists('Registry')) {
-        class Registry {}
+        class Registry {
+            protected array $data = [];
+            public function __construct($data = null) {
+                if (is_string($data)) {
+                    $decoded = json_decode($data, true);
+                    $this->data = is_array($decoded) ? $decoded : [];
+                } elseif (is_array($data)) {
+                    $this->data = $data;
+                } elseif ($data instanceof Registry) {
+                    $this->data = $data->data;
+                }
+            }
+            public function get(string $path, $default = null) {
+                return $this->data[$path] ?? $default;
+            }
+            public function set(string $path, $value): void {
+                $this->data[$path] = $value;
+            }
+            public function merge(Registry $source): self {
+                $this->data = array_merge($this->data, $source->data);
+                return $this;
+            }
+        }
+    }
+}
+
+namespace Joomla\Event {
+    if (!interface_exists('SubscriberInterface')) {
+        interface SubscriberInterface {}
+    }
+}
+
+namespace Joomla\Component\Fields\Administrator\Plugin {
+    if (!class_exists('FieldsPlugin')) {
+        class FieldsPlugin {
+            public $params;
+            public function __construct($params = null) {
+                $this->params = $params instanceof \Joomla\Registry\Registry ? $params : new \Joomla\Registry\Registry($params);
+            }
+            public function onCustomFieldsPrepareDom($field, \DOMElement $parent, \Joomla\CMS\Form\Form $form) {
+                return $parent->ownerDocument->createElement('field');
+            }
+            public function getApplication() {
+                return null;
+            }
+        }
+    }
+}
+
+namespace Joomla\CMS\Document {
+    if (!class_exists('HtmlDocument')) {
+        class HtmlDocument {}
+    }
+}
+
+namespace Joomla\CMS\Form {
+    if (!class_exists('FormHelper')) {
+        class FormHelper {
+            public static function addRulePath($path) {}
+            public static function addRulePrefix($prefix) {}
+        }
     }
 }
 
@@ -32,6 +92,7 @@ namespace {
     require_once __DIR__ . '/../plugins/fields/cpfcnpj/src/Rule/CpfcnpjRule.php';
     require_once __DIR__ . '/../plugins/fields/pix/src/Helper/PixHelper.php';
     require_once __DIR__ . '/../plugins/fields/pix/src/Rule/PixRule.php';
+    require_once __DIR__ . '/../plugins/fields/pix/src/Extension/Pix.php';
 
     use Uziel\Plugin\Fields\Cpf\Rule\CpfRule;
     use Uziel\Plugin\Fields\Cnpj\Rule\CnpjRule;
@@ -40,6 +101,7 @@ namespace {
     use Uziel\Plugin\Fields\Cpfcnpj\Rule\CpfcnpjRule;
     use Uziel\Plugin\Fields\Pix\Helper\PixHelper;
     use Uziel\Plugin\Fields\Pix\Rule\PixRule;
+    use Uziel\Plugin\Fields\Pix\Extension\Pix;
 
     $passed = 0;
     $failed = 0;
@@ -174,6 +236,30 @@ namespace {
     $rows = array_values($parsedRepeatable);
     assertCondition(count($rows) === 2, 'Repeatable subform produces 2 separate Pix items');
     assertCondition(PixRule::validate($rows[0]['pix_key']) && PixRule::validate($rows[1]['pix_key']), 'Both repeatable Pix keys are valid');
+
+    echo "\n--- Testing Pix Extension Parameter Resolution ---\n";
+    $pixPlugin = new Pix(['merchant_name' => 'DEFAULT HOLDER', 'repeat' => '0']);
+
+    // Test with Registry fieldparams
+    $fieldWithRegistry = (object) ['fieldparams' => new \Joomla\Registry\Registry(['merchant_name' => 'CUSTOM HOLDER', 'repeat' => '1'])];
+    $resolvedParams1 = $pixPlugin->getParamsFromField($fieldWithRegistry);
+    assertCondition($resolvedParams1->get('merchant_name') === 'CUSTOM HOLDER', 'Pix::getParamsFromField extracts Registry fieldparams correctly');
+    assertCondition($resolvedParams1->get('repeat') === '1', 'Pix::getParamsFromField resolves repeat from Registry');
+
+    // Test with JSON string fieldparams
+    $fieldWithJson = (object) ['fieldparams' => '{"merchant_name":"JSON HOLDER","repeat":"0"}'];
+    $resolvedParams2 = $pixPlugin->getParamsFromField($fieldWithJson);
+    assertCondition($resolvedParams2->get('merchant_name') === 'JSON HOLDER', 'Pix::getParamsFromField extracts JSON string fieldparams correctly');
+
+    // Test with array fieldparams
+    $fieldWithArray = (object) ['fieldparams' => ['merchant_name' => 'ARRAY HOLDER']];
+    $resolvedParams3 = $pixPlugin->getParamsFromField($fieldWithArray);
+    assertCondition($resolvedParams3->get('merchant_name') === 'ARRAY HOLDER', 'Pix::getParamsFromField extracts array fieldparams correctly');
+
+    // Test with fallback to plugin defaults when fieldparams is null
+    $fieldEmpty = (object) [];
+    $resolvedParams4 = $pixPlugin->getParamsFromField($fieldEmpty);
+    assertCondition($resolvedParams4->get('merchant_name') === 'DEFAULT HOLDER', 'Pix::getParamsFromField falls back to plugin default params');
 
 
     echo "\n============================================\n";

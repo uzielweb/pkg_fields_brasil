@@ -13,6 +13,7 @@
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
+use Joomla\Registry\Registry;
 use Uziel\Plugin\Fields\Pix\Helper\PixHelper;
 
 $rawValue = $field->value;
@@ -50,6 +51,11 @@ if ($firstKey !== null && \is_array($decoded[$firstKey])) {
 } else {
     // Single row
     $items = [$decoded];
+}
+
+if (!isset($fieldParams) || !($fieldParams instanceof Registry)) {
+    $rawParams   = $field->fieldparams ?? ($fieldParams ?? null);
+    $fieldParams = ($rawParams instanceof Registry) ? $rawParams : new Registry($rawParams);
 }
 
 $defaultMerchantName = (string) $fieldParams->get('merchant_name', 'BENEFICIARIO');
